@@ -1,0 +1,110 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versión del servidor:         10.1.21-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win32
+-- HeidiSQL Versión:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Volcando estructura de base de datos para t_enfasis
+DROP DATABASE IF EXISTS `t_enfasis`;
+CREATE DATABASE IF NOT EXISTS `t_enfasis` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `t_enfasis`;
+
+-- Volcando estructura para tabla t_enfasis.t_logros
+DROP TABLE IF EXISTS `t_logros`;
+CREATE TABLE IF NOT EXISTS `t_logros` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `logro` varchar(50) NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_t_logros_t_usuarios` (`id_usuario`),
+  CONSTRAINT `FK_t_logros_t_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `t_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenra el registro diario de logros alcanzados por lo usuarios.\r\n';
+
+-- Volcando datos para la tabla t_enfasis.t_logros: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_logros` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_logros` ENABLE KEYS */;
+
+-- Volcando estructura para tabla t_enfasis.t_opciones_respuestas
+DROP TABLE IF EXISTS `t_opciones_respuestas`;
+CREATE TABLE IF NOT EXISTS `t_opciones_respuestas` (
+  `id` int(11) NOT NULL,
+  `id_tema` int(11) NOT NULL,
+  `opcion_respuesta` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_t_opciones_respuestas_t_temas` (`id_tema`),
+  CONSTRAINT `FK_t_opciones_respuestas_t_temas` FOREIGN KEY (`id_tema`) REFERENCES `t_temas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenara las opciones de respuesta para las preguntas generas en cada tema\r\n';
+
+-- Volcando datos para la tabla t_enfasis.t_opciones_respuestas: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_opciones_respuestas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_opciones_respuestas` ENABLE KEYS */;
+
+-- Volcando estructura para tabla t_enfasis.t_preguntas
+DROP TABLE IF EXISTS `t_preguntas`;
+CREATE TABLE IF NOT EXISTS `t_preguntas` (
+  `id` int(11) NOT NULL,
+  `id_tema` int(11) NOT NULL,
+  `pregunta` varchar(50) NOT NULL,
+  `respuesta` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_t_preguntas_t_temas` (`id_tema`),
+  CONSTRAINT `FK_t_preguntas_t_temas` FOREIGN KEY (`id_tema`) REFERENCES `t_temas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenara toda las preguntas que se motraran en el juego para evaluar al usuario';
+
+-- Volcando datos para la tabla t_enfasis.t_preguntas: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_preguntas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_preguntas` ENABLE KEYS */;
+
+-- Volcando estructura para tabla t_enfasis.t_puntaje
+DROP TABLE IF EXISTS `t_puntaje`;
+CREATE TABLE IF NOT EXISTS `t_puntaje` (
+  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `puntaje` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_t_puntaje_t_usuarios` (`id_usuario`),
+  CONSTRAINT `FK_t_puntaje_t_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `t_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenara todos los datos correspondientes a los puntajes generados por cada usuario en el juego';
+
+-- Volcando datos para la tabla t_enfasis.t_puntaje: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_puntaje` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_puntaje` ENABLE KEYS */;
+
+-- Volcando estructura para tabla t_enfasis.t_temas
+DROP TABLE IF EXISTS `t_temas`;
+CREATE TABLE IF NOT EXISTS `t_temas` (
+  `id` int(11) NOT NULL,
+  `tema` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenara todos los temas que manejara el juego referente a las masacres de colombia';
+
+-- Volcando datos para la tabla t_enfasis.t_temas: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_temas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_temas` ENABLE KEYS */;
+
+-- Volcando estructura para tabla t_enfasis.t_usuarios
+DROP TABLE IF EXISTS `t_usuarios`;
+CREATE TABLE IF NOT EXISTS `t_usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `correo_usuario` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Esta tabla almacenara los datos necesarios para el ingreso al juego por parte de cada jugador';
+
+-- Volcando datos para la tabla t_enfasis.t_usuarios: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `t_usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_usuarios` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
