@@ -5,10 +5,14 @@
  */
 package vistas;
 
+import controlador.loginServices;
 import java.awt.Image;
+import java.sql.SQLException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import modelo.Fondo;
+import sun.security.krb5.internal.LoginOptions;
 
 /**
  *
@@ -16,7 +20,14 @@ import modelo.Fondo;
  */
 public class JFLogin extends javax.swing.JInternalFrame {
 
-  
+//    private void Validar_usuario() throws SQLException, ClassNotFoundException {
+//   
+//        setListaDatos(new loginServices().listarEstaciones(getJcbFase().getSelectedItem().toString()));
+//        for (String string : getListaDatos()) {
+//            getModeloComboBox().addElement(string);
+//        }
+//        getJcbEstaciones().setModel(getModeloComboBox());
+//    }
 
     public JFLogin() {
         initComponents();
@@ -35,7 +46,7 @@ public class JFLogin extends javax.swing.JInternalFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTexusuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
 
@@ -48,17 +59,17 @@ public class JFLogin extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("¿Olvidaste tu nombre de usuario? ingresa Aquí");
 
-        jTextField1.setToolTipText("");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTexusuario.setToolTipText("");
+        jTexusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTexusuarioActionPerformed(evt);
             }
         });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario:");
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/centro_memoria_historica.png"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_centro_h.png"))); // NOI18N
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
@@ -75,7 +86,7 @@ public class JFLogin extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTexusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(62, 62, 62))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -86,7 +97,7 @@ public class JFLogin extends javax.swing.JInternalFrame {
                 .addGap(147, 147, 147))
             .addGroup(layout.createSequentialGroup()
                 .addGap(97, 97, 97)
-                .addComponent(jButton8)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,21 +107,21 @@ public class JFLogin extends javax.swing.JInternalFrame {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTexusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jTexusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTexusuarioActionPerformed
+
+    }//GEN-LAST:event_jTexusuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -118,10 +129,8 @@ public class JFLogin extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTexusuario;
     // End of variables declaration//GEN-END:variables
-
- 
 
 //    private void setIconImage(Image Image) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

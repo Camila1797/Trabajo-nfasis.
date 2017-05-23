@@ -8,6 +8,7 @@ package vistas;
 import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import modelo.Fondo;
 
 /**
  *
@@ -27,6 +28,8 @@ public class JFMenu extends javax.swing.JInternalFrame {
         this.setResizable(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        Fondo fondo = new Fondo();
+        this.add(fondo);
     }
 
     /**
@@ -55,6 +58,7 @@ public class JFMenu extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario:");
 
         jButton5.setText("Salir");
@@ -88,7 +92,8 @@ public class JFMenu extends javax.swing.JInternalFrame {
         jButton8.setDefaultCapable(false);
         jButton8.setFocusable(false);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/centro_memoria_historica.png"))); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_centro_h.png"))); // NOI18N
         jButton7.setBorder(null);
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
@@ -103,10 +108,13 @@ public class JFMenu extends javax.swing.JInternalFrame {
         jButton6.setMaximumSize(new java.awt.Dimension(513, 513));
         jButton6.setMinimumSize(new java.awt.Dimension(513, 513));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Año2017 By Politecnico Gran Colombiano.derechos reservados.");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Total logros");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total puntos:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

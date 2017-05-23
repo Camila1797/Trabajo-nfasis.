@@ -8,7 +8,6 @@ package vistas;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.Fondo;
@@ -19,7 +18,7 @@ import modelo.Fondo;
  */
 public class JFinicio extends javax.swing.JFrame {
 
- 
+    public static boolean TstVentNvoPres = false;
     private static List<String> controlVentana;
     private JFLogin objetoIngresarPersona;
 
@@ -34,6 +33,7 @@ public class JFinicio extends javax.swing.JFrame {
     public void setObjetoIngresarPersona(JFLogin objetoIngresarPersona) {
         this.objetoIngresarPersona = objetoIngresarPersona;
     }
+    int x, y;
 
     /**
      * Creates new form JFinicio
@@ -47,6 +47,7 @@ public class JFinicio extends javax.swing.JFrame {
         Image Image = ImageIcon.getImage();
         this.setIconImage(Image);
         setTitle("Reconstruccion-Centro historico de memoria");
+
     }
 
     /**
@@ -72,6 +73,7 @@ public class JFinicio extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jm_ingresar = new javax.swing.JMenu();
         jmiIngresar = new javax.swing.JMenuItem();
@@ -182,10 +184,15 @@ public class JFinicio extends javax.swing.JFrame {
         jButton8.setDefaultCapable(false);
         jButton8.setFocusable(false);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_juego_2.png"))); // NOI18N
+        jLabel2.setFocusable(false);
+        jLabel2.setInheritsPopupMenu(false);
+
         dpContenedor.setLayer(jpRegistro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpContenedor.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpContenedor.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpContenedor.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpContenedor.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dpContenedorLayout = new javax.swing.GroupLayout(dpContenedor);
         dpContenedor.setLayout(dpContenedorLayout);
@@ -197,18 +204,25 @@ public class JFinicio extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton8)
-                .addGap(0, 373, Short.MAX_VALUE))
+                .addGap(0, 748, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpContenedorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(44, 44, 44))
         );
         dpContenedorLayout.setVerticalGroup(
             dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpContenedorLayout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
-                .addComponent(jpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGroup(dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dpContenedorLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dpContenedorLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addGroup(dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,11 +280,23 @@ public class JFinicio extends javax.swing.JFrame {
 
     private void jmiIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiIngresarActionPerformed
         // TODO add your handling code here:
-        JFLogin ingreso = new JFLogin();
-        this.dpContenedor.add(ingreso);
-        ingreso.show();
-        jpRegistro.setVisible(false);
-                
+
+        if (TstVentNvoPres == false) {
+            JFLogin ingreso = new JFLogin();
+            this.dpContenedor.add(ingreso);
+            ingreso.show();
+            TstVentNvoPres = true;
+            jpRegistro.setVisible(false);
+            jLabel2.setVisible(false);
+        }//termina if
+        else {
+            JOptionPane.showMessageDialog(null, "La ventana Ingreso ya esta abierta!!!");
+        }//termina else
+//        JFLogin ingreso = new JFLogin();
+//        this.dpContenedor.add(ingreso);
+//        ingreso.show();
+
+
     }//GEN-LAST:event_jmiIngresarActionPerformed
 
     /**
@@ -321,6 +347,7 @@ public class JFinicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

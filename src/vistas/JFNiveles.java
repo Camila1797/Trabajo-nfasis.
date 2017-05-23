@@ -8,6 +8,7 @@ package vistas;
 import java.awt.Dimension;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import modelo.Fondo;
 
 /**
  *
@@ -27,6 +28,8 @@ public class JFNiveles extends javax.swing.JInternalFrame {
         this.setResizable(false);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        Fondo fondo = new Fondo();
+        this.add(fondo);
     }
 
     /**
@@ -52,6 +55,7 @@ public class JFNiveles extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Niveles");
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Año2017 By Politecnico Gran Colombiano.derechos reservados.");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_nivel_nosuperado.png"))); // NOI18N
@@ -65,7 +69,7 @@ public class JFNiveles extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/centro_memoria_historica.png"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo_centro_h.png"))); // NOI18N
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
@@ -90,6 +94,7 @@ public class JFNiveles extends javax.swing.JInternalFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Niveles");
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
@@ -135,7 +140,7 @@ public class JFNiveles extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton9)
                         .addGap(22, 22, 22)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(jButton8))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
