@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import login.modelo.usuario;
+import registro.modelo.Registro;
 
 /**
  *
@@ -35,16 +36,27 @@ public class UsuarioDAO {
         }
     }
 
-public boolean getUsuario(usuario usuario){
-    String sql="SELECT * FROM t_usuarios WHERE nombre_usuario='"+ usuario.getLogin()+"'";
-    try{
-        st=conexion.createStatement();
-        rs=st.executeQuery(sql);
-        return rs.first();
-    }catch (Exception error) {
-    error.printStackTrace();    
+    public boolean getUsuario(usuario usuario) {
+        String sql = "SELECT * FROM t_usuarios WHERE nombre_usuario='" + usuario.getLogin() + "'";
+        try {
+            st = conexion.createStatement();
+            rs = st.executeQuery(sql);
+            return rs.first();
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return false;
     }
-    return false;
-}
-}
 
+    public boolean getRegistro(Registro Registro) {
+        String sql = "INSERT INTO t_usuarios (nombre_usuario,correo_usuario) VALUES ('" + Registro.getnombre() + "','" + Registro.getCorreo() + "')";
+        try {
+            st = conexion.createStatement();
+            st.executeUpdate(sql);
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return true;
+    }
+
+}

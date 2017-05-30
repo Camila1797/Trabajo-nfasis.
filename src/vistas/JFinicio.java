@@ -6,10 +6,9 @@
 package vistas;
 
 import java.awt.Image;
-import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import login.control.InterfaceValidacion2;
 import modelo.Fondo;
 
 /**
@@ -18,28 +17,11 @@ import modelo.Fondo;
  */
 public class JFinicio extends javax.swing.JFrame {
 
-    public static boolean TstVentNvoPres = false;
-    private static List<String> controlVentana;
-    private JFLogin objetoIngresarPersona;
+    private InterfaceValidacion2 intervalidacion;
 
-    public static List<String> getControlVentana() {
-        return controlVentana;
-    }
-
-    public JFLogin getObjetoIngresarPersona() {
-        return objetoIngresarPersona;
-    }
-
-    public void setObjetoIngresarPersona(JFLogin objetoIngresarPersona) {
-        this.objetoIngresarPersona = objetoIngresarPersona;
-    }
-    int x, y;
-
-    /**
-     * Creates new form JFinicio
-     */
-    public JFinicio() {
+    public JFinicio(InterfaceValidacion2 intervalidacion) {
         initComponents();
+        setVisible(true);
         Fondo fondo = new Fondo();
         this.add(fondo);
         setExtendedState(JFinicio.MAXIMIZED_BOTH);
@@ -47,6 +29,7 @@ public class JFinicio extends javax.swing.JFrame {
         Image Image = ImageIcon.getImage();
         this.setIconImage(Image);
         setTitle("Reconstruccion-Centro historico de memoria");
+        this.intervalidacion = intervalidacion;
 
     }
 
@@ -60,23 +43,26 @@ public class JFinicio extends javax.swing.JFrame {
     private void initComponents() {
 
         dpContenedor = new javax.swing.JDesktopPane();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jpRegistro = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        t_nombre = new javax.swing.JTextField();
+        t_correo1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        t_correo2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        t_usuario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jm_ingresar = new javax.swing.JMenu();
-        jmiIngresar = new javax.swing.JMenuItem();
         jMenu15 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,11 +72,37 @@ public class JFinicio extends javax.swing.JFrame {
         dpContenedor.setFocusable(false);
         dpContenedor.setOpaque(false);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Año2017 By Politecnico Gran Colombiano.derechos reservados.");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_juego_2.png"))); // NOI18N
+        jLabel2.setFocusable(false);
+        jLabel2.setInheritsPopupMenu(false);
+
         jLabel3.setText("Usuario");
 
         jLabel4.setText("Correo");
 
+        t_nombre.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                t_nombreCaretUpdate(evt);
+            }
+        });
+
+        t_correo1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                t_correo1CaretUpdate(evt);
+            }
+        });
+
         jLabel5.setText("Confirmacion correo");
+
+        t_correo2.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                t_correo2CaretUpdate(evt);
+            }
+        });
 
         jButton2.setText("Registrarse");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -134,65 +146,110 @@ public class JFinicio extends javax.swing.JFrame {
                                 .addGroup(jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addGroup(jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField2)
-                                        .addComponent(jTextField3)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))))))
+                                        .addComponent(t_nombre)
+                                        .addComponent(t_correo1)
+                                        .addComponent(t_correo2, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))))))
                     .addGroup(jpRegistroLayout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jButton9)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpRegistroLayout.setVerticalGroup(
             jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpRegistroLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_correo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(t_correo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jButton2)
                 .addGap(40, 40, 40)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Año2017 By Politecnico Gran Colombiano.derechos reservados.");
+        jTabbedPane1.addTab("Registro", jpRegistro);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/facebook.png"))); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setContentAreaFilled(false);
-        jButton6.setFocusable(false);
-        jButton6.setMaximumSize(new java.awt.Dimension(513, 513));
-        jButton6.setMinimumSize(new java.awt.Dimension(513, 513));
+        t_usuario.setToolTipText("");
+        t_usuario.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                t_usuarioCaretUpdate(evt);
+            }
+        });
+        t_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t_usuarioActionPerformed(evt);
+            }
+        });
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/twitter.png"))); // NOI18N
+        jLabel7.setText("Usuario:");
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/centro_memoria_historica.png"))); // NOI18N
         jButton8.setBorder(null);
+        jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
         jButton8.setDefaultCapable(false);
         jButton8.setFocusable(false);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nombre_juego_2.png"))); // NOI18N
-        jLabel2.setFocusable(false);
-        jLabel2.setInheritsPopupMenu(false);
+        jButton1.setText("Ingresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        dpContenedor.setLayer(jpRegistro, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel8.setText("¿Olvidaste tu nombre de usuario? ingresa Aquí");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(t_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(t_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel8)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Inicio de sesión", jPanel1);
+
         dpContenedor.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dpContenedor.setLayer(jButton6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dpContenedor.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dpContenedor.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dpContenedor.setLayer(jTabbedPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dpContenedorLayout = new javax.swing.GroupLayout(dpContenedor);
         dpContenedor.setLayout(dpContenedorLayout);
@@ -200,56 +257,33 @@ public class JFinicio extends javax.swing.JFrame {
             dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dpContenedorLayout.createSequentialGroup()
                 .addComponent(jLabel6)
-                .addGap(184, 184, 184)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
-                .addGap(0, 748, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpContenedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         dpContenedorLayout.setVerticalGroup(
             dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dpContenedorLayout.createSequentialGroup()
                 .addGroup(dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dpContenedorLayout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jpRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dpContenedorLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                .addGroup(dpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dpContenedorLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                .addComponent(jLabel6)
                 .addContainerGap())
         );
 
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Registro");
+
         jMenuBar1.setMaximumSize(new java.awt.Dimension(150, 32769));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(100, 21));
-
-        jm_ingresar.setText("Ingresar");
-        jm_ingresar.setMaximumSize(new java.awt.Dimension(70, 32767));
-        jm_ingresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jm_ingresarActionPerformed(evt);
-            }
-        });
-
-        jmiIngresar.setText("Ingresar");
-        jmiIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiIngresarActionPerformed(evt);
-            }
-        });
-        jm_ingresar.add(jmiIngresar);
-
-        jMenuBar1.add(jm_ingresar);
 
         jMenu15.setText("Galeria");
         jMenuBar1.add(jMenu15);
@@ -271,79 +305,57 @@ public class JFinicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String correo1, correo2;
+        correo1 = t_correo1.getText();
+        correo2 = t_correo2.getText();
+
+        if (correo1.equals(correo2)) {
+            intervalidacion.AccionRegistrar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Confirmacion de correo incorrecta");
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jm_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ingresarActionPerformed
+    private void t_usuarioCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_t_usuarioCaretUpdate
+        intervalidacion.RecibeUsuario(t_usuario.getText());
+    }//GEN-LAST:event_t_usuarioCaretUpdate
 
-    }//GEN-LAST:event_jm_ingresarActionPerformed
+    private void t_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_usuarioActionPerformed
 
-    private void jmiIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiIngresarActionPerformed
+    }//GEN-LAST:event_t_usuarioActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        intervalidacion.AccionEntrar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void t_nombreCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_t_nombreCaretUpdate
+        intervalidacion.InsertaUsuario(t_nombre.getText());
+    }//GEN-LAST:event_t_nombreCaretUpdate
+
+    private void t_correo1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_t_correo1CaretUpdate
         // TODO add your handling code here:
+    }//GEN-LAST:event_t_correo1CaretUpdate
 
-        if (TstVentNvoPres == false) {
-            JFLogin ingreso = new JFLogin();
-            this.dpContenedor.add(ingreso);
-            ingreso.show();
-            TstVentNvoPres = true;
-            jpRegistro.setVisible(false);
-            jLabel2.setVisible(false);
-        }//termina if
-        else {
-            JOptionPane.showMessageDialog(null, "La ventana Ingreso ya esta abierta!!!");
-        }//termina else
-//        JFLogin ingreso = new JFLogin();
-//        this.dpContenedor.add(ingreso);
-//        ingreso.show();
-
-
-    }//GEN-LAST:event_jmiIngresarActionPerformed
+    private void t_correo2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_t_correo2CaretUpdate
+        intervalidacion.RecibeCorreo(t_correo2.getText());
+    }//GEN-LAST:event_t_correo2CaretUpdate
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFinicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFinicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFinicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFinicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFinicio().setVisible(true);
-            }
-        });
-    }
-
-    public JPanel getJdpContenedor() {
-        JPanel jPanel1 = null;
-        return jPanel1;
-    }
-
+//    public static void main(String args[]) {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JFinicio().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpContenedor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -352,13 +364,16 @@ public class JFinicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu15;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JMenu jm_ingresar;
-    private javax.swing.JMenuItem jmiIngresar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel jpRegistro;
+    private javax.swing.JTextField t_correo1;
+    private javax.swing.JTextField t_correo2;
+    private javax.swing.JTextField t_nombre;
+    private javax.swing.JTextField t_usuario;
     // End of variables declaration//GEN-END:variables
 }
