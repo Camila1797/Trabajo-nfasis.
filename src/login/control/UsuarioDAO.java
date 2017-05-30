@@ -55,6 +55,7 @@ public class UsuarioDAO {
             st.executeUpdate(sql);
         } catch (Exception error) {
             error.printStackTrace();
+            return false;
         }
         return true;
     }

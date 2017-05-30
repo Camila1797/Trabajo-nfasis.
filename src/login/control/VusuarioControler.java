@@ -68,8 +68,9 @@ public class VusuarioControler implements InterfaceValidacion2 {
     @Override
     public void AccionRegistrar() {
         if (usuarioDAO.getRegistro(registro)) {
+          
             JOptionPane.showMessageDialog(null, "Usuario Regisrado");
-
+           
         } else {
             JOptionPane.showMessageDialog(null, "Error En Registro");
         }

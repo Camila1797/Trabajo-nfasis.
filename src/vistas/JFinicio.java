@@ -328,6 +328,9 @@ public class JFinicio extends javax.swing.JFrame {
             if (checkEmail(correo2)) {
                 if (correo1.equals(correo2)) {
                     intervalidacion.AccionRegistrar();
+                    t_nombre.setText(null);
+                    t_correo1.setText(null);
+                    t_correo2.setText(null);
                 } else {
                     JOptionPane.showMessageDialog(null, "Confirmacion de correo incorrecta");
                 }
@@ -350,6 +353,7 @@ public class JFinicio extends javax.swing.JFrame {
     }//GEN-LAST:event_t_usuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        t_usuario.setText(null);
         intervalidacion.AccionEntrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
