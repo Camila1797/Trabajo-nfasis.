@@ -14,4 +14,8 @@ public interface InterfaceValidacion2 {
     public void RecibeUsuario(String texto);
 
     public void AccionEntrar();
+    
+     public void InsertaUsuario(String texto);
+     public void RecibeCorreo(String texto);
+     public void AccionRegistrar();
 }
