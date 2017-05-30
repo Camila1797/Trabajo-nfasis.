@@ -6,6 +6,8 @@
 package vistas;
 
 import java.awt.Image;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import login.control.InterfaceValidacion2;
@@ -30,6 +32,19 @@ public class JFinicio extends javax.swing.JFrame {
         this.setIconImage(Image);
         setTitle("Reconstruccion-Centro historico de memoria");
         this.intervalidacion = intervalidacion;
+
+    }
+
+    public static boolean checkEmail(String email) {
+
+        // Establecer el patron
+        Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
+
+        // Asociar el string al patron
+        Matcher m = p.matcher(email);
+
+        // Comprobar si encaja
+        return m.matches();
 
     }
 
@@ -309,12 +324,21 @@ public class JFinicio extends javax.swing.JFrame {
         correo1 = t_correo1.getText();
         correo2 = t_correo2.getText();
 
-        if (correo1.equals(correo2)) {
-            intervalidacion.AccionRegistrar();
+        if (checkEmail(correo1)) {
+            if (checkEmail(correo2)) {
+                if (correo1.equals(correo2)) {
+                    intervalidacion.AccionRegistrar();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Confirmacion de correo incorrecta");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Segundo correo digitado erroneo");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Confirmacion de correo incorrecta");
-
+            JOptionPane.showMessageDialog(null, "Primer correo digitado erroneo");
         }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void t_usuarioCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_t_usuarioCaretUpdate
